@@ -9,8 +9,9 @@ view: jobs {
     sql:
       SELECT *
       FROM `region-us.INFORMATION_SCHEMA.JOBS_BY_PROJECT`
-      WHERE creation_time >= {% date_start date.date_filter %}
-        AND creation_time < {% date_end date.date_filter %}
+      WHERE {% condition date.date_filter %} creation_time {% endcondition %}
+      --WHERE creation_time >= '2020-01-01'
+      --  AND creation_time < '2020-01-01'
     ;;
   }
 }
